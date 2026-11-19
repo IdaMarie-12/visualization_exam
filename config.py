@@ -26,14 +26,18 @@ CHARACTER_CSV = RESOURCES_DIR / "characters.csv"
 CHAPTERS_DIR = INTERIM_DIR / "chapters"
 CHAPTERS_CSV = INTERIM_DIR / "chapters.csv"
 
-# 2_mentions.py
+# 2_characters.py
+CHARACTERS_CSV = RESOURCES_DIR / "characters.csv"
+CHARACTER_CANDIDATES_CSV = INTERIM_DIR / "character_candidates.csv"
+
+# 3_mentions.py
 MENTIONS_CSV = PROCESSED_DIR / "mentions.csv"
 COOCCURRENCES_CSV = PROCESSED_DIR / "cooccurrences.csv"
 
-# 3_extract.py
+# 4_extract.py
 DESCRIPTIONS_CSV = INTERIM_DIR / "descriptions.csv"
 
-# 4_aggregate.py
+# 5_aggregate.py
 WORD_COUNTS_CSV = PROCESSED_DIR / "word_counts.csv"
 DISTINCTIVE_WORDS_CSV = PROCESSED_DIR / "distinctive_words.csv"
 THEMES_CSV = PROCESSED_DIR / "themes.csv"
@@ -50,6 +54,8 @@ SPACY_MODEL = "en_core_web_sm"
 PRONOUN_WINDOW = 1
 USE_LINKED_PRONOUNS = True
 LEAVE_OUT = ["Harry Potter", "Hermione Granger"]
+MAX_CHARACTERS = 100
+MIN_NAME_COUNT = 5
 PROFILE_TOP_WORDS = 15
 MIN_PROFILE_MENTIONS = 30
 VALIDATION_SAMPLE_SIZE = 70
