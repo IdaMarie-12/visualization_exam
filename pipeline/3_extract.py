@@ -11,7 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from config import (CHAPTERS_CSV, CHARACTERS_MENTIONS_CSV, CHARACTERS_CSV, DESCRIPTIONS_CSV, PRONOUN_WINDOW, SPACEY_MODEL)
+from config import (CHAPTERS_CSV, CHARACTER_CSV, DESCRIPTIONS_CSV, MENTIONS_CSV, PRONOUN_WINDOW, SPACY_MODEL)
 
 PRONOUNS = {
     "he": "male", "him": "male", "his": "male", "himself": "male",
@@ -57,8 +57,8 @@ class PronounLinker:
 #--------------------------------
 def load_characters():
     """ Return a dict: name variant -> that characters row from character.csv. """
-    with open(CHARACTERS_CSV, encoding = "utf-8") as f:
-        row = list(csv.DictReader(f))
+    with open(CHARACTER_CSV, encoding = "utf-8") as f:
+        rows = list(csv.DictReader(f))
 
     return {v.strip(): row for row in rows for v in row["variants"].split(";")}
 
@@ -89,9 +89,9 @@ def find_mentions(doc, matcher, variants, linker, sentence_number):
             if tok.i in span_at:
                 span = span_at[tok.i]
                 row = variants[span.text]
-                linker.saw_namke(row, number)
+                linker.saw_name(row, number)
                 skip_until = span.end
-                yield span.root, row["character"], row["gender"], ro["group"], "name"
+                yield span.root, row["character"], row["gender"], row["group"], "name"
                 continue
 
             gender = PRONOUNS.get(tok.lower_)
@@ -197,7 +197,7 @@ def main():
         chapters = [c for c in chapters if int(c["book"]) in args.books]
 
     DESCRIPTIONS_CSV.parent.mkdir(parents = True, exist_ok = True)
-    CHARACTER_MENTIONS_CSV.parent.mkdir(parents = True, exist_ok = True)
+    MENTIONS_CSV.parent.mkdir(parents = True, exist_ok = True)
     mention_counts = Counter()
     started = time.time()
     rows_written = 0
@@ -206,7 +206,7 @@ def main():
         writer = csv.DictWriter(f, fieldnames = FIELDS)
         writer.writeheader()
 
-        for chatper in chapters:
+        for chapter in chapters:
             linker.reset()
             sentence_number = 0
             paragraphs = [p for p in chapter["text"].split("\n\n") if p.strip()]
@@ -237,14 +237,14 @@ def main():
             minutes = (time.time() - started) / 60
             print(f"Book {chapter['book']} ch {int(chapter['chapter']):>2}  "f"{chapter['title'][:40]:40}  {rows_written:>7,} rows  {minutes:5.1f} min", flush=True)
 
-    with open(CHARACTER_MENTIONS_CSV, "w", newline = "", encoding = "utf-8") as f:
+    with open(MENTIONS_CSV, "w", newline = "", encoding = "utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(MENTION_FIELDS)
         for key, n in sorted(mention_counts.items()):
             writer.writerow([*key, n])
 
     print(f"Done. Wrote {rows_written:,} rows to {DESCRIPTIONS_CSV}")
-    print(f"Wrote mention counts to {CHARACTER_MENTIONS_CSV}")
+    print(f"Wrote mention counts to {MENTIONS_CSV}")
 
 if __name__ == "__main__":
     main()

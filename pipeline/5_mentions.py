@@ -10,7 +10,7 @@ from pathlib import Path
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from config import CHAPTER_CSV, CHARATERS_CSV, COOCCURRENCE_CSV, MENTIONS_CSV
+from config import CHAPTERS_CSV, CHARACTER_CSV, COOCCURRENCES_CSV, MENTIONS_CSV
 
 PRONOUNS = {
     "male": re.compile(r"\b(he|him|his|himself)\b", re.I),
@@ -19,7 +19,7 @@ PRONOUNS = {
 
 def load_characters():
     """ Read character list and build a lookup from name varient to character. """
-    with open(CHARATERS_CSV, encoding="utf-8") as f:
+    with open(CHARACTER_CSV, encoding="utf-8") as f:
         characters = list(csv.DictReader(f))
 
     variant_to_character = {}
@@ -43,7 +43,7 @@ def build_name_pattern(variants):
 
 def main():
     csv.field_size_limit(sys.maxsize)
-    chapters = pd.read_csv(CHAPTER_CSV)
+    chapters = pd.read_csv(CHAPTERS_CSV)
     characters, variant_to_character = load_characters()
     name_pattern = build_name_pattern(variant_to_character)
 
@@ -82,7 +82,7 @@ def main():
     mentions.to_csv(MENTIONS_CSV, index = False)
 
     cooccurrence = pd.DataFrame([{"book": book, "character_a": a, "character_b": b, "paragraphs": n} for (book, a, b), n in pair_counts.items()]).sort_values(["book", "paragraphs"], ascending=[True, False])
-    cooccurrence.to_csv(COOCCURRENCE_CSV, index=False)
+    cooccurrence.to_csv(COOCCURRENCES_CSV, index=False)
 
     names = mentions[mentions.kind == "name"]
     top = names.groupby("character").mentions.sum().sort_values(ascending = False).head(5)
@@ -95,7 +95,7 @@ def main():
     print("Share of mentions that are female (%), per book:")
     print(share.to_string())
     print(f"Wrote {len(mentions):,} rows to {MENTIONS_CSV}")
-    print(f"Wrote {len(cooccurrence):,} character pairs to {COOCCURRENCE_CSV}")
+    print(f"Wrote {len(cooccurrence):,} character pairs to {COOCCURRENCES_CSV}")
 
 if __name__ == "__main__":
     main()

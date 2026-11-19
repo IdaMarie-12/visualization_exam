@@ -120,16 +120,16 @@ def make_title(title_lines):
 
     return title
 
-def split_book(book_number):
+def split_book(book_path):
     """ Split one book file into chapters. """
-    lines = Path(sys.path).read_text(encoding = "utf-8").split("\n")
+    lines = book_path.read_text(encoding = "utf-8").split("\n")
 
     starts = [i for i in range(len(lines)) if is_heading(lines, i)]
 
     chapters = []
     for n, start in enumerate(starts):
         title_lines, k = [lines[start].strip()], start + 1
-        while k < len(lines) and CAPS.fillmatch(lines[k].strip() or "x"):
+        while k < len(lines) and CAPS.fullmatch(lines[k].strip() or "x"):
             title_lines.append(lines[k].strip())
             k += 1
         end = starts[n +1] if n + 1 < len(starts) else len(lines)
@@ -147,9 +147,9 @@ def main():
 
     rows = []
     for book in range (1, 8):
-        matches = sorted(RAW_DIR.glob(f"Book{book}.text"))
+        matches = sorted(RAW_DIR.glob(f"Book{book}.txt"))
         if not matches:
-            sys.exit(f"Missing {RAW_DIR / f'Book{book}.text'}: put the seven book files in data/raw/")
+            sys.exit(f"Missing {RAW_DIR / f'Book{book}.txt'}: put the seven book files in data/raw/")
         
         chapters = split_book(matches[0])
 
@@ -183,4 +183,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
