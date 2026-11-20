@@ -17,7 +17,7 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 # Hand made inputs
 RESOURCES_DIR = ROOT / "resources"
 LEXICON_DIR = RESOURCES_DIR / "lexicon"
-CHARACTER_CSV = RESOURCES_DIR / "characters.csv"
+CHARACTER_CSV = PROCESSED_DIR / "characters.csv"
 
 #--------------------------------
 # Files produced by each pipeline step
@@ -27,7 +27,7 @@ CHAPTERS_DIR = INTERIM_DIR / "chapters"
 CHAPTERS_CSV = INTERIM_DIR / "chapters.csv"
 
 # 2_characters.py
-CHARACTERS_CSV = RESOURCES_DIR / "characters.csv"
+CHARACTERS_CSV = PROCESSED_DIR / "characters.csv"
 CHARACTER_CANDIDATES_CSV = INTERIM_DIR / "character_candidates.csv"
 
 # 3_mentions.py

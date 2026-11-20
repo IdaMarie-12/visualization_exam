@@ -45,14 +45,17 @@ def weighted_log_odds(a, b, prior):
 
     return (log_odds_a - log_odds_b) / np.sqrt(1 / (a + a_w) + 1 / (b + a_w))
 
-def load_lexicons():
-    """ Read every resources/lexicon/<theme>.txt into {theme: set of words}."""
-    lexicon = {}
-    for file in sorted(LEXICON_DIR.glob("*.txt")):
-        lines = [l.strip().lower() for l in file.read_text(encoding = "utf-8").splitlines()]
-        lexicon[file.stem] = {l for l in lines if l and not l.startswith("#")}
-
-    return lexicon
+def load_distinctive_themes(words, top_n=100):
+    """ Use the top distinctive modifier words as female/male themes. """
+    overall = words[
+        (words.book == ALL_BOOKS)
+        & (words.voice == "all")
+        & (words.subset == "all")
+        & (words.relation == "modifier")
+    ]
+    female = set(overall.nlargest(top_n, "z").word.str.lower())
+    male = set(overall.nsmallest(top_n, "z").word.str.lower())
+    return {"female-distinctive": female, "male-distinctive": male}
 
 #--------------------------------
 # Tables
@@ -153,17 +156,18 @@ def build_profiles(descriptions, mentions, priors):
                "mentions", "per_1000", "z", "compare_per_1000", "compare_label"]
     return pd.concat(profiles, ignore_index=True)[columns].round(4)
 
-def build_themes(descriptions, mentions, lexicons):
-    """ Table 5: describing words per gender that belong to each theme. """
+def build_themes(descriptions, mentions, themes):
+    """ Table 5: describing words per gender that belong to each distinctive theme. """
     descriptions = descriptions.copy()  
     totals = {(b, v): rows.groupby("gender").mentions.sum() for b, v, rows in scopes(mentions)}
-    parts = descriptions.word.str.split(" ")
     rows_out = []
-    for theme, words in lexicons.items():
-        descriptions[f"in_{theme}"] = parts.map(lambda ws: any(w in words for w in ws))
+    for theme, words in themes.items():
+        descriptions[f"in_{theme}"] = descriptions.word.str.lower().map(
+            lambda word: word in words or any(part in words for part in str(word).split())
+        )
     for book, voice, rows in scopes(descriptions):
         all_words = rows.groupby("gender").size()
-        for theme in lexicons:
+        for theme in themes:
             in_theme = rows[rows[f"in_{theme}"]].groupby("gender").size()
             for gender in ("female", "male"):
                 count = int(in_theme.get(gender, 0))
@@ -189,12 +193,17 @@ def main():
     priors = {relation: rows.word.value_counts()
               for relation, rows in descriptions.groupby("relation")}
 
+    distinctive_words = build_distinctive_words(descriptions, mentions, priors)
     tables = {
         CHARACTER_TOTALS_CSV: build_character_totals(mentions),
         WORD_COUNTS_CSV: build_word_counts(descriptions),
-        DISTINCTIVE_WORDS_CSV: build_distinctive_words(descriptions, mentions, priors),
+        DISTINCTIVE_WORDS_CSV: distinctive_words,
         PROFILES_CSV: build_profiles(descriptions, mentions, priors),
-        THEMES_CSV: build_themes(descriptions, mentions, load_lexicons()),
+        THEMES_CSV: build_themes(
+            descriptions,
+            mentions,
+            load_distinctive_themes(distinctive_words),
+        ),
     }
     for path, table in tables.items():
         path.parent.mkdir(parents=True, exist_ok=True)
