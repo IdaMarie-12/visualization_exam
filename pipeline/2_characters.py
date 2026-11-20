@@ -66,7 +66,7 @@ ALIASES = {
     "Arabella Figg": ["Mrs. Figg", "Figg"],
 
     # Villains
-    "Lord Voldemort": ["Voldemort", "You-Know-Who", "He-Who-Must-Not-Be-Named", "the Dark Lord", "Tom Riddle", "Riddle"],
+    "Lord Voldemort": ["Voldemort", "You-Know-Who", "He-Who-Must-Not-Be-Named", "the Dark Lord", "Tom Riddle", "Riddle", "Tom"],
     "Peter Pettigrew": ["Wormtail", "Scabbers"],
     "Lucius Malfoy": ["Mr. Malfoy"],
     "Narcissa Malfoy": ["Mrs. Malfoy"],
@@ -120,7 +120,7 @@ NOT_PERSONS = {
     "Hogwarts", "Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin", "Quidditch",
 
     # Locations
-    "Gringotts", "Diagon Alley", "Hogsmeade", "Privet Drive", "Godric's Hollow", "Azkaban", "Burrow",
+    "Gringotts", "Diagon Alley", "Hogsmeade", "Privet Drive", "Godric's Hollow", "Azkaban", "Burrow", "Grimmauld Place", 
 
     # Objects
     "Firebolt", "Nimbus", "Nimbus two thousand", "Invisibility Cloak", "Elder Wand", "Resurrection Stone", "Philosopher's Stone", "Bludger", "Snitch", "Golden Snitch", "Horcrux", "Horcruxes", "Deathly Hallows", "Marauder's Map", "Marauders' Map", "Time-Turner", "Pensieve", "Sorting Hat", "Floo", "Polyjuice", "Butterbeer", "Cloak", "Prophet", "Daily Prophet", "Quibbler", "Map",
@@ -132,7 +132,7 @@ NOT_PERSONS = {
     "Fang", "Norbert", "Aragog", "Norris", "Mrs. Norris", "Crookshanks", "Hedwig", "Buckbeat", "Fawkes", "Thestral", "Dobby", "Winky", "Kreacher", "Nagini", "Grawp", "Fluffy", "Basilisk", "Acromantula", "Hippogriff", "Grindylow", "Dementor", "Dementors", 
 
     # Other
-    "Madam", "Mum", "Dad", "Muggle", "Muggles", "Professor", "Sir", "Gran", "Merlin", "Yeh", "Uncle", "Aunt", "Mark", "Dark Mark", "Don", "Blimey", "Keeper", "Seeker", "Chaser", "Beater", "Captain", "Prefect", "Head Boy", "Head Girl", "Headmaster", "Headmistress", "Minister of Magic", "Durmstrang", "Beauxbatons", "Death",
+    "Madam", "Mum", "Dad", "Muggle", "Muggles", "Professor", "Sir", "Gran", "Merlin", "Yeh", "Uncle", "Aunt", "Mark", "Dark Mark", "Don", "Blimey", "Keeper", "Seeker", "Chaser", "Beater", "Captain", "Prefect", "Head Boy", "Head Girl", "Headmaster", "Headmistress", "Minister of Magic", "Durmstrang", "Beauxbatons", "Death", "Order",
 }
 
 #--------------------------------
