@@ -8,8 +8,9 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from config import (CHAPTERS_CSV, CHARACTER_CANDIDATES_CSV, CHARACTERS_CSV, LEAVE_OUT, MAX_CHARACTERS, MIN_NAME_COUNT, SPACY_MODEL)
-
+from config import (CHAPTERS_CSV, CHARACTER_CANDIDATES_CSV, CHARACTERS_CSV,  # noqa: E402
+                    LEAVE_OUT, MAX_CHARACTERS, MIN_CHARACTER_COUNT, MIN_NAME_COUNT,
+                    SPACY_MODEL)
 #--------------------------------
 # Human knowledge for spaCy
 #--------------------------------
@@ -54,6 +55,7 @@ ALIASES = {
     "Horace Slughorn": ["Slughorn", "Professor Slughorn"],
     "Quirinus Quirrell": ["Quirrell", "Professor Quirrell"],
     "Argus Filch": ["Filch", "Mr. Filch"],
+    "Nearly Headless Nick": ["Nick", "Sir Nicholas"],
 
     # Allies
     "Sirius Black": ["Padfoot", "Snuffles", "Black"],
@@ -66,7 +68,7 @@ ALIASES = {
     "Arabella Figg": ["Mrs. Figg", "Figg"],
 
     # Villains
-    "Lord Voldemort": ["Voldemort", "You-Know-Who", "He-Who-Must-Not-Be-Named", "the Dark Lord", "Tom Riddle", "Riddle", "Tom"],
+    "Lord Voldemort": ["Voldemort", "You-Know-Who", "You-Know- Who", "He-Who-Must-Not-Be-Named", "the Dark Lord", "Tom Riddle", "Riddle", "Tom"],
     "Peter Pettigrew": ["Wormtail", "Scabbers"],
     "Lucius Malfoy": ["Mr. Malfoy"],
     "Narcissa Malfoy": ["Mrs. Malfoy"],
@@ -129,7 +131,7 @@ NOT_PERSONS = {
     "Patronus", "Avada Kedavra", "Crucio", "Imperio", "Expelliarmus", "Stupefy", "Sectumsempra", "Obliviate", "Rictusempra", "Petrificus Totalus", "Accio", "Alohomora", "Expecto Patronum", "Lumos", "Nox",
 
     # Creatures
-    "Fang", "Norbert", "Aragog", "Norris", "Mrs. Norris", "Crookshanks", "Hedwig", "Buckbeat", "Fawkes", "Thestral", "Dobby", "Winky", "Kreacher", "Nagini", "Grawp", "Fluffy", "Basilisk", "Acromantula", "Hippogriff", "Grindylow", "Dementor", "Dementors", 
+    "Fang", "Norbert", "Aragog", "Norris", "Mrs. Norris", "Crookshanks", "Hedwig", "Buckbeat", "Fawkes", "Thestral", "Dobby", "Winky", "Kreacher", "Nagini", "Grawp", "Fluffy", "Basilisk", "Acromantula", "Hippogriff", "Grindylow", "Dementor", "Dementors", "Griphook", "Goblin", "Firenze", "Bane", "Ronan", "Jus",
 
     # Other
     "Madam", "Mum", "Dad", "Muggle", "Muggles", "Professor", "Sir", "Gran", "Merlin", "Yeh", "Uncle", "Aunt", "Mark", "Dark Mark", "Don", "Blimey", "Keeper", "Seeker", "Chaser", "Beater", "Captain", "Prefect", "Head Boy", "Head Girl", "Headmaster", "Headmistress", "Minister of Magic", "Durmstrang", "Beauxbatons", "Death", "Order",
@@ -310,7 +312,8 @@ def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT, m
         else:
             report[variant] = ("ambiguous", " / ".join(ranked[:4]))
 
-    ranked = sorted([c for c in members if total(c) > 0 or c in aliases], key=total, reverse=True)
+    ranked = sorted([c for c in members if total(c) >= MIN_CHARACTER_COUNT or c in aliases],
+                    key=total, reverse=True)
     characters = []
     for name in ranked:
         if len(characters) >= max_characters and name not in aliases:

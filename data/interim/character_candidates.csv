@@ -48,14 +48,12 @@ Tom,70,2,13,alias,Lord Voldemort
 Lord Voldemort,67,3,23,alias,Lord Voldemort
 Neville,66,2,28,alias,Neville Longbottom
 Rita Skeeter,65,18,14,kept,Rita Skeeter
-Firenze,64,1,22,kept,Firenze
 Katie,63,13,4,merged,Katie Bell
 Stan,60,3,11,merged,Stan Shunpike
 Professor Flitwick,58,2,16,alias,Filius Flitwick
 Ernie,58,4,18,merged,Ernie Macmillan
 Weasleys,57,1,8,family (plural),
 Molly,57,4,7,merged,Molly Weasley
-Griphook,53,2,10,kept,Griphook
 Professor Sprout,52,10,4,alias,Pomona Sprout
 Mr. Malfoy,52,0,20,alias,Lucius Malfoy
 Miss Granger,51,1,4,alias,Hermione Granger
@@ -109,7 +107,6 @@ Moaning Myrtle,23,6,3,kept,Moaning Myrtle
 Professor Slughorn,23,0,6,alias,Horace Slughorn
 Merope,23,11,2,kept,Merope
 Granger,22,1,1,alias,Hermione Granger
-Bane,22,1,7,kept,Bane
 Montague,22,1,9,kept,Montague
 Bellatrix,22,9,5,alias,Bellatrix Lestrange
 Professor Binns,21,2,5,kept,Professor Binns
@@ -128,186 +125,184 @@ Mrs. Dursley,18,7,1,alias,Petunia Dursley
 Percy Weasley,18,0,9,kept,Percy Weasley
 Mr. Filch,18,1,2,alias,Argus Filch
 Gregorovitch,18,0,4,kept,Gregorovitch
-Ronan,17,0,7,kept,Ronan
-Nick,17,0,4,kept,Nick
+Nick,17,0,4,alias,Nearly Headless Nick
 Cho Chang,17,8,2,kept,Cho Chang
 Amos,17,0,3,merged,Amos Diggory
 Mundungus,17,0,5,alias,Mundungus Fletcher
 Luna Lovegood,17,7,1,kept,Luna Lovegood
-You-Know- Who,16,0,4,kept,You-Know- Who
-Jus,16,1,4,kept,Jus
+You-Know- Who,16,0,4,alias,Lord Voldemort
 Ernie Macmillan,16,0,6,kept,Ernie Macmillan
-Sir Cadogan,16,0,7,not in the top,Sir Cadogan
+Sir Cadogan,16,0,7,kept,Sir Cadogan
 Remus,16,0,2,merged,Remus Lupin
 Mr. Bagman,16,0,4,merged,Ludo Bagman
 Skeeter,16,3,1,merged,Rita Skeeter
 Ginny Weasley,15,3,2,alias,Ginny Weasley
-Howler,15,1,3,not in the top,Howler
+Howler,15,1,3,kept,Howler
 Diggory,15,3,1,merged,Cedric Diggory
-Buckbeak,15,1,5,not in the top,Buckbeak
+Buckbeak,15,1,5,kept,Buckbeak
 Bode,15,0,6,kept,Bode
-Felix Felicis,15,0,5,not in the top,Felix Felicis
-Kendra,15,6,0,not in the top,Kendra
+Felix Felicis,15,0,5,kept,Felix Felicis
+Kendra,15,6,0,kept,Kendra
 Mr. Lovegood,15,0,1,merged,Xenophilius Lovegood
 Oliver Wood,14,1,5,kept,Oliver Wood
 Gilderoy Lockhart,14,0,7,kept,Gilderoy Lockhart
 Mr. Borgin,14,1,2,merged,Borgin
 Severus Snape,14,0,4,alias,Severus Snape
-Dung,14,1,6,not in the top,Dung
+Dung,14,1,6,kept,Dung
 Cornelius,14,0,3,merged,Cornelius Fudge
 Albus Dumbledore,14,0,5,alias,Albus Dumbledore
-Macnair,14,0,3,not in the top,Macnair
-Death Eater,14,0,6,not in the top,Death Eater
+Macnair,14,0,3,kept,Macnair
+Death Eater,14,0,6,kept,Death Eater
 Michael Corner,14,2,2,kept,Michael Corner
-Yaxley,14,0,5,not in the top,Yaxley
-Mrs. Cole,14,6,2,not in the top,Mrs. Cole
+Yaxley,14,0,5,kept,Yaxley
+Mrs. Cole,14,6,2,kept,Mrs. Cole
 Potters,13,0,6,family (plural),
 Marge,13,2,1,merged,Aunt Marge
 Vernon Dursley,13,1,5,alias,Vernon Dursley
 Professor Quirrell,13,0,4,alias,Quirinus Quirrell
-Madam Malkin,13,3,2,not in the top,Madam Malkin
+Madam Malkin,13,3,2,kept,Madam Malkin
 Oliver,13,0,0,merged,Oliver Wood
 Colin Creevey,13,0,5,kept,Colin Creevey
 Riddles,13,0,4,family (plural),
-Moran,13,1,0,not in the top,Moran
-Karkus,13,0,5,not in the top,Karkus
+Moran,13,1,0,kept,Moran
+Karkus,13,0,5,kept,Karkus
 Horace,13,0,2,merged,Horace Slughorn
 James Potter,12,1,3,alias,James Potter
 Fred Weasley,12,0,4,alias,Fred Weasley
-Errol,12,0,4,not in the top,Errol
-Dark Magic,12,0,1,not in the top,Dark Magic
-Pansy,12,3,1,not in the top,Pansy
-Sibyll,12,0,0,not in the top,Sibyll
+Errol,12,0,4,kept,Errol
+Dark Magic,12,0,1,kept,Dark Magic
+Pansy,12,3,1,kept,Pansy
+Sibyll,12,0,0,kept,Sibyll
 Trelawney,12,3,4,alias,Sybill Trelawney
 Zacharias Smith,12,0,5,kept,Zacharias Smith
-Bella,12,4,1,not in the top,Bella
-Bogrod,12,0,6,not in the top,Bogrod
+Bella,12,4,1,kept,Bella
+Bogrod,12,0,6,kept,Bogrod
 Johnson,11,2,4,merged,Angelina Johnson
 Stan Shunpike,11,0,3,kept,Stan Shunpike
-Tha,11,0,1,not in the top,Tha
-Roger Davies,11,3,3,not in the top,Roger Davies
+Tha,11,0,1,kept,Tha
+Roger Davies,11,3,3,kept,Roger Davies
 Kingsley Shacklebolt,11,2,3,kept,Kingsley Shacklebolt
 Mr. Gaunt,11,0,2,merged,Gaunt
 Hannah,10,0,3,merged,Hannah Abbott
-Quaffle,10,2,2,not in the top,Quaffle
+Quaffle,10,2,2,kept,Quaffle
 Professor Lockhart,10,0,5,merged,Gilderoy Lockhart
-Ern,10,0,1,not in the top,Ern
-Potty,10,0,2,not in the top,Potty
-Marauder,10,0,2,not in the top,Marauder
+Ern,10,0,1,kept,Ern
+Potty,10,0,2,kept,Potty
+Marauder,10,0,2,kept,Marauder
 Ludo,10,1,0,merged,Ludo Bagman
-Stun,10,2,4,not in the top,Stun
+Stun,10,2,4,kept,Stun
 Remus Lupin,10,1,5,alias,Remus Lupin
 Zacharias,10,0,3,merged,Zacharias Smith
 Smith,10,0,3,merged,Zacharias Smith
-Phineas Nigellus,10,0,5,not in the top,Phineas Nigellus
-Professor Tofty,10,0,2,not in the top,Professor Tofty
+Phineas Nigellus,10,0,5,kept,Phineas Nigellus
+Professor Tofty,10,0,2,kept,Professor Tofty
 Slughorn,10,1,4,alias,Horace Slughorn
 Alicia Spinnet,9,1,1,kept,Alicia Spinnet
 Quirrell,9,0,4,alias,Quirinus Quirrell
-Miss,9,2,0,not in the top,Miss
+Miss,9,2,0,kept,Miss
 Padfoot,9,0,1,alias,Sirius Black
 Peter Pettigrew,9,0,4,alias,Peter Pettigrew
-Apparating,9,0,1,not in the top,Apparating
+Apparating,9,0,1,kept,Apparating
 Viktor,9,0,1,merged,Viktor Krum
 Professor Karkaroff,9,0,5,alias,Igor Karkaroff
-Disapparate,9,0,3,not in the top,Disapparate
-Mrs. Black,9,0,2,not in the top,Mrs. Black
+Disapparate,9,0,3,kept,Disapparate
+Mrs. Black,9,0,2,kept,Mrs. Black
 Ted Tonks,9,0,4,kept,Ted Tonks
-Healer,9,1,2,not in the top,Healer
-Wizard,8,0,0,not in the top,Wizard Wheezes
-Nah,8,0,1,not in the top,Nah
+Healer,9,1,2,kept,Healer
+Wizard,8,0,0,merged,Wizard Wheezes
+Nah,8,0,1,kept,Nah
 Seamus,8,0,1,merged,Seamus Finnigan
 Godric Gryffindor,8,0,1,kept,Godric Gryffindor
-Professor Dippet,8,1,6,not in the top,Professor Dippet
-Trevor,8,0,2,not in the top,Trevor
+Professor Dippet,8,1,6,kept,Professor Dippet
+Trevor,8,0,2,kept,Trevor
 Hannah Abbott,8,1,2,kept,Hannah Abbott
-Gabrielle,8,6,0,not in the top,Gabrielle
-Hestia,8,2,4,not in the top,Hestia
-Grawpy,8,0,1,not in the top,Grawpy
-Professor Marchbanks,8,0,4,not in the top,Professor Marchbanks
-Nasty,7,0,1,not in the top,Nasty
-Mummy,7,0,2,not in the top,Mummy
+Gabrielle,8,6,0,kept,Gabrielle
+Hestia,8,2,4,kept,Hestia
+Grawpy,8,0,1,kept,Grawpy
+Professor Marchbanks,8,0,4,kept,Professor Marchbanks
+Nasty,7,0,1,kept,Nasty
+Mummy,7,0,2,kept,Mummy
 Neville Longbottom,7,0,3,alias,Neville Longbottom
 Angelina Johnson,7,1,0,kept,Angelina Johnson
 Gilderoy,7,1,0,merged,Gilderoy Lockhart
-Ripper,7,1,2,not in the top,Ripper
-Zonko,7,0,0,not in the top,Zonko
-Derrick,7,0,1,not in the top,Derrick
-Calm,7,1,1,not in the top,Calm
+Ripper,7,1,2,kept,Ripper
+Zonko,7,0,0,kept,Zonko
+Derrick,7,0,1,kept,Derrick
+Calm,7,1,1,kept,Calm
 Amos Diggory,7,0,3,kept,Amos Diggory
 Michael,7,1,1,merged,Michael Corner
-King,7,0,0,not in the top,King
-Belby,7,0,3,not in the top,Belby
-Dedalus,7,0,1,not in the top,Dedalus Diggle
-Elphias,7,2,0,not in the top,Elphias
-Mafalda,7,2,1,not in the top,Mafalda
+King,7,0,0,kept,King
+Belby,7,0,3,kept,Belby
+Dedalus,7,0,1,merged,Dedalus Diggle
+Elphias,7,2,0,kept,Elphias
+Mafalda,7,2,1,kept,Mafalda
 Gellert Grindelwald,7,0,3,kept,Gellert Grindelwald
 Gellert,7,0,3,merged,Gellert Grindelwald
-Dennis,6,0,1,not in the top,Dennis
+Dennis,6,0,1,kept,Dennis
 Knuts,6,0,2,family (plural),
-Aaah,6,0,1,not in the top,Aaah
+Aaah,6,0,1,kept,Aaah
 Ron Weasley,6,0,2,alias,Ron Weasley
-Nicolas Flamel,6,1,1,not in the top,Nicolas Flamel
-Sir Patrick,6,0,3,not in the top,Sir Patrick
-Millicent Bulstrode,6,1,0,not in the top,Millicent Bulstrode
-Righ,6,0,1,not in the top,Righ
-Madam Rosmerta,6,3,1,not in the top,Madam Rosmerta
-Kiss,6,0,0,not in the top,Kiss
+Nicolas Flamel,6,1,1,kept,Nicolas Flamel
+Sir Patrick,6,0,3,kept,Sir Patrick
+Millicent Bulstrode,6,1,0,kept,Millicent Bulstrode
+Righ,6,0,1,kept,Righ
+Madam Rosmerta,6,3,1,kept,Madam Rosmerta
+Kiss,6,0,0,kept,Kiss
 Bertha,6,2,1,merged,Bertha Jorkins
-Wizard Wheezes,6,0,0,not in the top,Wizard Wheezes
-Pigwidgeon,6,1,1,not in the top,Pigwidgeon
-Portkeys,6,0,1,not in the top,Portkeys
-Volkov,6,0,1,not in the top,Volkov
-Dimitrov,6,0,0,not in the top,Dimitrov
-Mostafa,6,0,2,not in the top,Mostafa
-Wha,6,0,1,not in the top,Wha
-Hermy,6,1,0,not in the top,Hermy
-Terry Boot,6,0,0,not in the top,Terry Boot
+Wizard Wheezes,6,0,0,kept,Wizard Wheezes
+Pigwidgeon,6,1,1,kept,Pigwidgeon
+Portkeys,6,0,1,kept,Portkeys
+Volkov,6,0,1,kept,Volkov
+Dimitrov,6,0,0,kept,Dimitrov
+Mostafa,6,0,2,kept,Mostafa
+Wha,6,0,1,kept,Wha
+Hermy,6,1,0,kept,Hermy
+Terry Boot,6,0,0,kept,Terry Boot
 Ronald,6,0,0,alias,Ron Weasley
 Mr. Bode,6,0,4,merged,Bode
-Dark Lord,6,0,4,not in the top,Dark Lord
-Miss Edgecombe,6,1,0,not in the top,Miss Edgecombe
+Dark Lord,6,0,4,kept,Dark Lord
+Miss Edgecombe,6,1,0,kept,Miss Edgecombe
 Narcissa Malfoy,6,1,1,alias,Narcissa Malfoy
-Demelza,6,1,2,not in the top,Demelza
+Demelza,6,1,2,kept,Demelza
 Dumbledores,6,0,1,family (plural),
-Harper,6,0,5,not in the top,Harper
+Harper,6,0,5,kept,Harper
 Xenophilius Lovegood,6,0,3,kept,Xenophilius Lovegood
 Lovegood,6,0,0,merged,Luna Lovegood
-Gornuk,6,0,0,not in the top,Gornuk
-Dedalus Diggle,5,0,4,not in the top,Dedalus Diggle
-Fungi,5,0,1,not in the top,Fungi
-Vampires,5,0,0,not in the top,Vampires
-He'd,5,0,1,not in the top,He'd
-Nicolas,5,0,1,not in the top,Nicolas Flamel
-Firs,5,0,0,not in the top,Firs
+Gornuk,6,0,0,kept,Gornuk
+Dedalus Diggle,5,0,4,kept,Dedalus Diggle
+Fungi,5,0,1,kept,Fungi
+Vampires,5,0,0,kept,Vampires
+He'd,5,0,1,kept,He'd
+Nicolas,5,0,1,merged,Nicolas Flamel
+Firs,5,0,0,kept,Firs
 Charlie Weasley,5,0,1,kept,Charlie Weasley
 Jordan,5,0,0,merged,Lee Jordan
 Petunia,5,2,0,merged,Petunia Dursley
-Knockturn Alley,5,0,1,not in the top,Knockturn Alley
+Knockturn Alley,5,0,1,kept,Knockturn Alley
 Mandrakes,5,0,0,family (plural),
-Arry Potter,5,0,1,not in the top,Arry Potter
+Arry Potter,5,0,1,kept,Arry Potter
 Sirius Black,5,0,0,alias,Sirius Black
-Grim,5,0,2,not in the top,Grim
-Professor Vector,5,1,0,not in the top,Professor Vector
+Grim,5,0,2,kept,Grim
+Professor Vector,5,1,0,kept,Professor Vector
 Chang,5,0,1,merged,Cho Chang
-Seer,5,2,1,not in the top,Seer
+Seer,5,2,1,kept,Seer
 Frank Bryce,5,0,2,kept,Frank Bryce
-Perkins,5,0,2,not in the top,Perkins
-Drop,5,1,1,not in the top,Drop
+Perkins,5,0,2,kept,Perkins
+Drop,5,1,1,kept,Drop
 Skrewts,5,0,2,family (plural),
 Dark,5,0,0,ambiguous,Dark Magic / Dark Lord
 Snuffles,5,0,1,alias,Sirius Black
 Alastor Moody,5,0,2,alias,Alastor Moody
-Susan Bones,5,2,0,not in the top,Susan Bones
+Susan Bones,5,2,0,kept,Susan Bones
 Shacklebolt,5,0,1,merged,Kingsley Shacklebolt
-Anthony Goldstein,5,0,0,not in the top,Anthony Goldstein
-Sturgis,5,0,0,not in the top,Sturgis
-Galleon,5,0,2,not in the top,Galleon
-Dirk Cresswell,5,0,0,not in the top,Dirk Cresswell
-Mr. Burke,5,0,0,not in the top,Mr. Burke
+Anthony Goldstein,5,0,0,kept,Anthony Goldstein
+Sturgis,5,0,0,kept,Sturgis
+Galleon,5,0,2,kept,Galleon
+Dirk Cresswell,5,0,0,kept,Dirk Cresswell
+Mr. Burke,5,0,0,kept,Mr. Burke
 Auntie Muriel,5,2,1,kept,Auntie Muriel
-Grindelvald,5,0,1,not in the top,Grindelvald
-Teddy,5,0,2,not in the top,Teddy
+Grindelvald,5,0,1,kept,Grindelvald
+Teddy,5,0,2,kept,Teddy
 Mr. H. Potter,4,0,0,too rare,
 Mom,4,0,3,too rare,
 Susan,4,1,1,too rare,
@@ -658,7 +653,7 @@ Bleaaargh,1,0,0,too rare,
 Oooooh,1,0,0,too rare,
 "Professor McGonagall. ""The",1,0,0,too rare,
 Sir Nicholas de Mimsy,1,0,0,too rare,
-Sir Nicholas,1,0,1,too rare,
+Sir Nicholas,1,0,1,alias,Nearly Headless Nick
 Bloody,1,0,1,too rare,
 Uncle Algie,1,0,1,too rare,
 Hoggy Warty Hogwarts,1,0,0,too rare,

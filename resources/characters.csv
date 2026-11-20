@@ -14,8 +14,8 @@ Minerva McGonagall,female,character,Professor McGonagall;Minerva McGonagall;McGo
 Vernon Dursley,male,character,Vernon Dursley;Uncle Vernon;Mr. Dursley;Vernon,393,0.94
 Dudley Dursley,male,character,Dudley Dursley;Dudley,308,0.93
 Percy Weasley,male,character,Percy Weasley;Percy,293,0.92
+Lord Voldemort,male,character,He-Who-Must-Not-Be-Named;Lord Voldemort;You-Know- Who;the Dark Lord;You-Know-Who;Tom Riddle;Voldemort;Riddle;Tom,283,0.94
 Luna Lovegood,female,character,Luna Lovegood;Lovegood;Luna,278,0.61
-Lord Voldemort,male,character,He-Who-Must-Not-Be-Named;Lord Voldemort;the Dark Lord;You-Know-Who;Tom Riddle;Voldemort;Riddle;Tom,267,0.94
 Bill Weasley,male,character,Bill Weasley;Bill,262,0.79
 Dolores Umbridge,female,character,Professor Umbridge;Dolores Umbridge;Umbridge;Dolores,255,0.78
 Barty Crouch,male,character,Barty Crouch Sr.;Barty Crouch;Mr. Crouch;Crouch,196,0.92
@@ -44,7 +44,6 @@ Neville Longbottom,male,character,Neville Longbottom;Longbottom;Neville,75,0.94
 Lily Potter,female,character,Lily Potter;Lily Evans;Lily,74,0.62
 Ernie Macmillan,male,character,Ernie Macmillan;Ernie,74,0.86
 Stan Shunpike,male,character,Stan Shunpike;Stan,71,0.82
-Firenze,male,character,Firenze,64,0.96
 Moaning Myrtle,female,character,Moaning Myrtle;Myrtle,63,0.56
 Filius Flitwick,male,character,Professor Flitwick;Filius Flitwick;Flitwick,62,0.9
 Xenophilius Lovegood,male,character,Xenophilius Lovegood;Mr. Lovegood;Xenophilius,62,0.88
@@ -55,7 +54,6 @@ Gellert Grindelwald,male,character,Gellert Grindelwald;Grindelwald;Gellert,57,1.
 Pomona Sprout,female,character,Professor Sprout;Pomona Sprout;Sprout,56,0.76
 Frank Bryce,male,character,Frank Bryce;Frank,55,1.0
 Colin Creevey,male,character,Colin Creevey;Colin,54,1.0
-Griphook,male,character,Griphook,53,0.83
 Petunia Dursley,female,character,Petunia Dursley;Aunt Petunia;Mrs. Dursley;Petunia,52,0.85
 Horace Slughorn,male,character,Professor Slughorn;Horace Slughorn;Slughorn;Horace,46,0.92
 Arabella Figg,female,character,Arabella Figg;Mrs. Figg;Figg,46,0.75
@@ -82,7 +80,6 @@ Doge,male,character,Doge,25,0.83
 Amos Diggory,male,character,Amos Diggory;Amos,24,1.0
 Merope,female,character,Merope,23,0.85
 Quirinus Quirrell,male,character,Professor Quirrell;Quirinus Quirrell;Quirrell,22,1.0
-Bane,male,character,Bane,22,0.88
 Montague,male,character,Montague,22,0.9
 Lavender Brown,female,character,Lavender Brown;Lavender,21,0.5
 Michael Corner,male,character,Michael Corner;Michael,21,0.5
@@ -90,15 +87,8 @@ Professor Binns,male,character,Professor Binns,21,0.71
 Bode,male,character,Mr. Bode;Bode,21,1.0
 Mundungus Fletcher,male,character,Mundungus Fletcher;Mundungus;Fletcher,20,1.0
 Mrs. Cattermole,female,character,Mrs. Cattermole,20,0.91
-Mr. Roberts,male,character,Mr. Roberts,19,1.0
-Hannah Abbott,female,character,Hannah Abbott;Hannah,18,0.83
-Angelina Johnson,female,character,Angelina Johnson;Johnson,18,0.57
-Gregorovitch,male,character,Gregorovitch,18,1.0
+Nearly Headless Nick,male,character,Nearly Headless Nick;Sir Nicholas;Nick,18,1.0
 Cornelius Fudge,male,character,Cornelius Fudge;Minister Fudge;Cornelius;Fudge,17,1.0
-Ronan,male,character,Ronan,17,1.0
-Nick,male,character,Nick,17,1.0
-You-Know- Who,male,character,You-Know- Who,16,1.0
-Jus,male,character,Jus,16,0.8
 Rubeus Hagrid,male,character,Rubeus Hagrid;Hagrid;Rubeus,7,1.0
 Nymphadora Tonks,female,character,Nymphadora Tonks;Nymphadora;Tonks,5,1.0
 Fleur Delacour,female,character,Fleur Delacour;Fleur,4,1.0
