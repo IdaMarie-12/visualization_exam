@@ -1,69 +1,142 @@
 """ Find the characters and write the character list. """
 
 import csv
+from encodings.aliases import aliases
 import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from config import (CHAPTERS_CSV, CHARACTER_CANDIDATES_CSV, CHARACTERS_CSV,  # noqa: E402
-                    LEAVE_OUT, MAX_CHARACTERS, MIN_NAME_COUNT, SPACY_MODEL)
+from config import (CHAPTERS_CSV, CHARACTER_CANDIDATES_CSV, CHARACTERS_CSV, LEAVE_OUT, MAX_CHARACTERS, MIN_NAME_COUNT, SPACY_MODEL)
 
-# spaCy is imported inside find_names() only, so the grouping functions below can be
-# imported and tested without spaCy installed.
-
-# ======================================================================================
-# Human knowledge: the parts spaCy cannot work out on its own
-# ======================================================================================
-
-# Nicknames, epithets and titled surnames, per character: "canonical name": [variants].
-# These variants always belong to that character, whatever the automatic grouping says.
-# The canonical name is the character's name in the app; if spaCy also finds that name,
-# its other variants join automatically.
+#--------------------------------
+# Human knowledge for spaCy
+#--------------------------------
 ALIASES = {
+    # Trio
     "Harry Potter": ["the Boy Who Lived", "Potter"],
-    "Lord Voldemort": ["Voldemort", "You-Know-Who", "He-Who-Must-Not-Be-Named",
-                       "the Dark Lord", "Tom Riddle", "Riddle"],
+    "Ron Weasley": ["Ronald", "Ron"],
+    "Hermione Granger": ["Granger", "Miss Granger"],
+
+    # Weasley family
+    "Molly Weasley": ["Mrs. Weasley"],
+    "Arthur Weasley": ["Mr. Weasley"],
+    "Ginny Weasley": ["Ginevra"],
+    "Fred Weasley": ["Fred"],
+    "George Weasley": ["George"],
+    "Bill Weasley": ["Bill"],
+
+    # Dursley family
+    "Petunia Dursley": ["Aunt Petunia", "Mrs. Dursley"],
+    "Vernon Dursley": ["Uncle Vernon", "Mr. Dursley"],
+    "Dudley Dursley": ["Dudley"],
+
+    # Students
+    "Neville Longbottom": ["Neville", "Longbottom"],
+    "Draco Malfoy": ["Malfoy"],
+    "Vincent Crabbe": ["Crabbe"],
+    "Gregory Goyle": ["Goyle"],
+    "Fleur Delacour": ["Fleur"],
+    "Lavender Brown": ["Lavender"],
+    "Parvati Patil": ["Parvati"],
+
+    # Hogwarts staff
+    "Poppy Pomfrey": ["Madam Pomfrey"],
+    "Alastor Moody": ["Mad-Eye", "Mad-Eye Moody"],
+    "Rubeus Hagrid": ["Hagrid", "Rubeus"],
+    "Severus Snape": ["Snape", "Professor Snape"],
+    "Minerva McGonagall": ["McGonagall", "Professor McGonagall", "Minerva"],
+    "Sybill Trelawney": ["Trelawney", "Professor Trelawney", "Sybill"],
+    "Filius Flitwick": ["Flitwick", "Professor Flitwick"],
+    "Pomona Sprout": ["Sprout", "Professor Sprout"],
+    "Horace Slughorn": ["Slughorn", "Professor Slughorn"],
+    "Quirinus Quirrell": ["Quirrell", "Professor Quirrell"],
+    "Argus Filch": ["Filch", "Mr. Filch"],
+
+    # Allies
     "Sirius Black": ["Padfoot", "Snuffles", "Black"],
-    "Peter Pettigrew": ["Wormtail", "Scabbers"],
     "Remus Lupin": ["Moony"],
     "James Potter": ["Prongs"],
     "Lily Potter": ["Lily Evans"],
-    "Alastor Moody": ["Mad-Eye", "Mad-Eye Moody"],
-    "Hermione Granger": ["Granger", "Miss Granger"],
-    "Ron Weasley": ["Ronald"],
-    "Ginny Weasley": ["Ginevra"],
-    "Draco Malfoy": ["Malfoy"],
-    "Molly Weasley": ["Mrs. Weasley"],
-    "Arthur Weasley": ["Mr. Weasley"],
-    "Petunia Dursley": ["Aunt Petunia", "Mrs. Dursley"],
-    "Vernon Dursley": ["Uncle Vernon", "Mr. Dursley"],
+    "Nymphadora Tonks": ["Tonks", "Nymphadora"],
+    "Aberforth Dumbledore": ["Aberforth"],
+    "Garrick Ollivander": ["Ollivander", "Mr. Ollivander"],
+    "Arabella Figg": ["Mrs. Figg", "Figg"],
+
+    # Villains
+    "Lord Voldemort": ["Voldemort", "You-Know-Who", "He-Who-Must-Not-Be-Named", "the Dark Lord", "Tom Riddle", "Riddle"],
+    "Peter Pettigrew": ["Wormtail", "Scabbers"],
     "Lucius Malfoy": ["Mr. Malfoy"],
     "Narcissa Malfoy": ["Mrs. Malfoy"],
-    "Poppy Pomfrey": ["Madam Pomfrey"],
+    "Dolores Umbridge": ["Umbridge", "Professor Umbridge", "Dolores"],
+    "Bellatrix Lestrange": ["Bellatrix", "Lestrange"],
+    "Fenrir Greyback": ["Greyback"],
+    "Igor Karkaroff": ["Karkaroff", "Professor Karkaroff"],
+
+    # Other
     "Olympe Maxime": ["Madame Maxime"],
+    "Mundungus Fletcher": ["Mundungus", "Fletcher"],
+    "Cornelius Fudge": ["Minister Fudge", "Fudge"],
+    "Barty Crouch": ["Barty Crouch Sr.", "Mr. Crouch"],
+    "Rufus Scrimgeour": ["Minister Scrimgeour", "Scrimgeour"],
+
 }
 
-# Corrections for a wrong majority vote: "character": "female" / "male".
-GENDER_OVERRIDES = {}
+_FEMALE = [
+    # Trio
+    "Hermione Granger",
 
-# Words spaCy sometimes marks as PERSON but that are not characters (houses, places,
-# creatures, spells, brooms, ...). Compared without titles and without a final "s".
+    # Weasley family
+    "Molly Weasley", "Ginny Weasley",
+
+    # Dursley family
+    "Petunia Dursley",
+
+    # Students
+    "Fleur Delacour", "Lavender Brown", "Parvati Patil",
+
+    # Hogwarts staff
+    "Poppy Pomfrey", "Minerva McGonagall", "Sybill Trelawney", "Pomona Sprout",
+
+    # Allies
+    "Lily Potter", "Nymphadora Tonks", "Arabella Figg",
+
+    # Villains
+    "Narcissa Malfoy", "Dolores Umbridge", "Bellatrix Lestrange",
+
+    # Other
+    "Olympe Maxime",
+    
+    # Wrong in the pronoun vote (not in ALIASES)
+    "Alicia Spinnet", "Auntie Muriel", "Bertha Jorkins",
+]
+GENDER_OVERRIDES = {name: "male" for name in ALIASES}
+GENDER_OVERRIDES.update({name: "female" for name in _FEMALE})
+
 NOT_PERSONS = {
-    "Hogwarts", "Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw", "Quidditch",
-    "Muggle", "Dementor", "Death Eater", "Auror", "Gringotts", "Hogsmeade", "Azkaban",
-    "Diagon Alley", "Firebolt", "Nimbus", "Nimbus Two Thousand", "Snitch", "Bludger",
-    "Quaffle", "Patronus", "Pensieve", "Horcrux", "Expelliarmus", "Lumos", "Accio",
-    "Stupefy", "Crucio", "Avada Kedavra", "Floo", "Polyjuice", "Butterbeer",
-    "Professor", "Sir", "Madam", "Mum", "Dad", "Gran", "Merlin", "Hallows",
+    # Hogwarts
+    "Hogwarts", "Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin", "Quidditch",
+
+    # Locations
+    "Gringotts", "Diagon Alley", "Hogsmeade", "Privet Drive", "Godric's Hollow", "Azkaban",
+
+    # Objects
+    "Firebolt", "Nimbus", "Nimbus two thousand", "Invisibility Cloak", "Elder Wand", "Resurrection Stone", "Philosopher's Stone", "Bludger", "Snitch", "Golden Snitch", "Horcrux", "Horcruxes", "Deathly Hallows", "Marauder's Map", "Marauders' Map", "Time-Turner", "Pensieve", "Sorting Hat", "Floo", "Polyjuice", "Butterbeer", "Cloak", "Prophet", "Daily Prophet", "Quibbler",
+
+    # Spells
+    "Patronus", "Avada Kedavra", "Crucio", "Imperio", "Expelliarmus", "Stupefy", "Sectumsempra", "Obliviate", "Rictusempra", "Petrificus Totalus", "Accio", "Alohomora", "Expecto Patronum", "Lumos", "Nox",
+
+    # Creatures
+    "Fang", "Norbert", "Aragog", "Norris", "Mrs. Norris", "Crookshanks", "Hedwig", "Buckbeat", "Fawkes", "Thestral", "Dobby", "Winky", "Kreacher", "Nagini", "Grawp", "Fluffy", "Basilisk", "Acromantula", "Hippogriff", "Grindylow", "Dementor", "Dementors", 
+
+    # Other
+    "Madam", "Mum", "Dad", "Muggle", "Muggles", "Professor", "Sir", "Gran", "Merlin", "Yeh", "Uncle", "Aunt", "Mark", "Dark Mark", "Don", "Blimey", "Keeper", "Seeker", "Chaser", "Beater", "Captain", "Prefect", "Head Boy", "Head Girl", "Headmaster", "Headmistress", "Minister of Magic", "Durmstrang", "Beauxbatons"
 }
 
-# ======================================================================================
-# Settings for the automatic grouping
-# ======================================================================================
-
-# Titles kept with a name, and the gender they imply (None = says nothing about gender).
+#--------------------------------
+# Settings
+#--------------------------------
 TITLES = {
     "Mr.": "male", "Mr": "male", "Uncle": "male", "Lord": "male", "Sir": "male",
     "Mrs.": "female", "Mrs": "female", "Miss": "female", "Ms.": "female",
@@ -76,21 +149,13 @@ PRONOUNS = {
     "she": "female", "her": "female", "hers": "female", "herself": "female",
 }
 
-# How many votes a gendered title (Mr., Mrs., ...) is worth for the titled form.
 TITLE_VOTES = 5
-
-# Gender votes: how many words after a name are searched for the first he/she.
 VOTE_WINDOW = 25
-
-# A short name joins the most mentioned matching character only if that character is
-# mentioned at least this many times more than the second one. Otherwise: ambiguous.
 DOMINANCE = 3
 
-
-# ======================================================================================
-# Small helpers (no spaCy needed)
-# ======================================================================================
-
+#--------------------------------
+# Small helpers
+#--------------------------------
 def clean(text):
     """Tidy a name as found: straight quotes, no possessive 's, no line-break leftovers
     ("/n", "\\n") or trailing punctuation, single spaces."""
@@ -114,13 +179,18 @@ def looks_like_name(variant):
     if not re.match(r"[A-Z]", bare) or not re.search(r"[a-z]", bare):
         return False
     singular = bare[:-1] if bare.endswith("s") else bare
+
+    _, bare = split_title(variant)
+    if not re.match(r"[A-Z]", bare) or not re.search(r"[a-z]", bare):
+        return False
+    if "," in bare or " and " in bare:  # "Harry, Ron" = two people, not one name
+        return False
+
     return bare not in NOT_PERSONS and singular not in NOT_PERSONS
 
-
-# ======================================================================================
-# Step 1-2: finding names and gender votes with spaCy
-# ======================================================================================
-
+#--------------------------------
+# Find the names and gender votes
+#--------------------------------
 def find_names(chapters):
     """
     Run spaCy NER over all chapters.
@@ -132,19 +202,16 @@ def find_names(chapters):
     """
     import spacy
 
-    # Only the parts needed for names are switched on: much faster than a full parse.
     nlp = spacy.load(SPACY_MODEL, disable=["parser", "lemmatizer", "attribute_ruler", "tagger"])
 
     counts, votes = Counter(), defaultdict(Counter)
     for number, chapter in enumerate(chapters, 1):
-        # Split into paragraphs; also on literal "/n" leftovers, if the text has them.
         paragraphs = [p for p in re.split(r"\n\s*\n|(?:/n){2,}", chapter["text"]) if p.strip()]
         for doc in nlp.pipe(paragraphs, batch_size=64):
             people = [e for e in doc.ents if e.label_ == "PERSON"]
             person_starts = {e.start for e in people}
 
             for ent in people:
-                # Keep a title right before the name: "Mrs." + "Weasley".
                 text = ent.text
                 if ent.start > 0 and doc[ent.start - 1].text in TITLES:
                     text = f"{doc[ent.start - 1].text} {text}"
@@ -153,8 +220,6 @@ def find_names(chapters):
                     continue
                 counts[variant] += 1
 
-                # Gender vote: the first pronoun in the next VOTE_WINDOW words, unless
-                # another name comes first (then the pronoun is probably about them).
                 for tok in doc[ent.end:min(ent.end + VOTE_WINDOW, len(doc))]:
                     if tok.i in person_starts:
                         break
@@ -172,46 +237,31 @@ def find_names(chapters):
               "normal text (run step 1 again with the current 1_chapters.py).")
     return counts, votes
 
-
-# ======================================================================================
-# Step 3-5: grouping variants into characters
-# ======================================================================================
-
-def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT,
-                     max_characters=MAX_CHARACTERS, overrides=GENDER_OVERRIDES):
-    """
-    Turn variant counts and gender votes into a character list.
-
-    Returns
-    -------
-    characters : list of dict  (character, gender, variants, found, gender_share),
-                 most mentioned first
-    report     : dict variant -> (what happened, character or "")
-    """
+#--------------------------------
+# Grouping variants into characters
+#--------------------------------
+def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT, max_characters=MAX_CHARACTERS, overrides=GENDER_OVERRIDES):
+    """ Turn variant counts and gender votes into a character list. """
     report = {}
     alias_of = {v: name for name, variants in aliases.items() for v in variants}
 
-    # Title votes: a gendered title counts as a few votes for the titled form ("Mrs.
-    # Weasley" -> female). Only a few, so a character's own pronoun votes always weigh more.
     votes = {v: Counter(c) for v, c in votes.items()}
     for variant in counts:
         title, _ = split_title(variant)
         if title and TITLES[title]:
             votes.setdefault(variant, Counter())[TITLES[title]] += TITLE_VOTES
 
-    members = defaultdict(list)  # character -> its variants
+    members = defaultdict(list)  
 
-    # Aliases first: they always win.
     for variant in counts:
         if variant in alias_of:
             members[alias_of[variant]].append(variant)
             report[variant] = ("alias", alias_of[variant])
-    for name in aliases:  # the canonical name itself belongs to the character too
+    for name in aliases:  
         if name in counts and name not in report:
             members[name].append(name)
             report[name] = ("alias", name)
 
-    # The rest: a person's name, and frequent enough?
     rest = []
     for variant, n in counts.items():
         if variant in report:
@@ -225,11 +275,9 @@ def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT,
         else:
             rest.append(variant)
 
-    # Full names (two or more words, without the title) start characters, most found first.
     words = {v: split_title(v)[1].split() for v in rest}
     full = sorted([v for v in rest if len(words[v]) >= 2], key=counts.get, reverse=True)
     for variant in full:
-        # "Harry James Potter" joins "Harry Potter" (same first and last word).
         match = next((c for c in members if len(c.split()) >= 2 and c.split()[0] == words[variant][0]
                       and c.split()[-1] == words[variant][-1]), None)
         name = match or variant
@@ -239,20 +287,15 @@ def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT,
     def total(name):
         return sum(counts.get(v, 0) for v in members[name])
 
-    # Every alias name is a possible target, even if spaCy never found it written out
-    # in full: "Harry" then still joins "Harry Potter".
     for name in aliases:
         members.setdefault(name, [])
 
-    # Short and titled names join the full name that contains them.
     short = sorted([v for v in rest if v not in report], key=counts.get, reverse=True)
     for variant in short:
         bare_words = set(words[variant])
         candidates = [c for c in members if bare_words <= set(c.split())]
         title, _ = split_title(variant)
         if title and TITLES[title]:
-            # "Mrs. X" can only be a woman called X: merge only into a character whose own
-            # pronoun votes say female. "Mr. Lovegood" therefore never becomes Luna.
             candidates = [c for c in candidates if gender_of(c, members, votes)[0] == TITLES[title]]
         if not candidates:
             members[variant].append(variant)
@@ -265,7 +308,6 @@ def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT,
         else:
             report[variant] = ("ambiguous", " / ".join(ranked[:4]))
 
-    # Keep the most mentioned characters.
     ranked = sorted([c for c in members if total(c) > 0], key=total, reverse=True)
     characters = []
     for name in ranked:
@@ -276,7 +318,7 @@ def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT,
         gender, share = gender_of(name, members, votes)
         if name in overrides:
             gender = overrides[name]
-        if gender is None:  # no votes at all: cannot be used for a gender comparison
+        if gender is None:  
             for v in members[name]:
                 report[v] = ("no gender votes", name)
             continue
@@ -301,16 +343,14 @@ def remove_duplicates(characters):
     """A variant may belong to one character only (step 3 checks this): keep it for the
     most mentioned character and drop it from the others."""
     seen = set()
-    for c in characters:  # most mentioned first
+    for c in characters:
         c["variants"] = [v for v in c["variants"] if v not in seen]
         seen.update(c["variants"])
     return characters
 
-
-# ======================================================================================
+#--------------------------------
 # Main
-# ======================================================================================
-
+#--------------------------------
 def main():
     csv.field_size_limit(sys.maxsize)
     with open(CHAPTERS_CSV, encoding="utf-8") as f:
