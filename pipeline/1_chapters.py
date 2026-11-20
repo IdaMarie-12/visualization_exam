@@ -39,7 +39,7 @@ CAPS = re.compile(r"[A-Z0-9 ,.'’\-—:!?&]{3,}")
 NOT_CHAPTERS = {
     "IMPROPER USE OF MAGIC OFFICE",
     "SAW HIM COME BACK? WHO HAD TO",
-    "ST. MUNGO'S HEALER 1722-1741",
+    "ST. MUNGO’S HEALER 1722-1741",
     "CREATURE-INDUCED INJURIES",
     "ORDINARY WIZARDING LEVEL",
     "WEASLEY WILL MAKE SURE WE WIN,",
@@ -88,7 +88,7 @@ def clean(raw_lines):
     """ Turn the raw lines of one chapter into clean running text. """
     # Remove header and "/"
     kept = [l.rstrip() for l in raw_lines if not HEADER.match(l) and l.strip() != "/"]
-    text = "/n".join(kept)
+    text = "\n".join(kept)
 
     # Re-join words that were split with a hyphen
     text = re.sub(r"(\w)-\n\s*(\w)", r"\1\2", text)

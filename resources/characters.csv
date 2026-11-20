@@ -1,97 +1,105 @@
 character,gender,group,variants,found,gender_share
-Harry Potter,male,character,the Boy Who Lived;Harry Potter;Mr. Potter;Potter;Harry,16068,0.89
-Ron Weasley,male,character,Ron Weasley;Weasley;Ronald;Ron,5456,0.83
-Albus Dumbledore,male,character,Headmaster Dumbledore;Professor Dumbledore;Albus Dumbledore;Dumbledore;Albus,2010,0.93
-Hermione Granger,female,character,Hermione Granger;Miss Granger;Hermione;Granger,1891,0.53
-Draco Malfoy,male,character,Draco Malfoy;Malfoy,897,0.94
-Remus Lupin,male,character,Professor Lupin;Remus Lupin;Lupin;Moony;Remus,626,0.94
-Ginny Weasley,female,character,Ginny Weasley;Ginevra;Ginny,617,0.59
-Arthur Weasley,male,character,Arthur Weasley;Mr. Weasley;Arthur,603,0.89
-Molly Weasley,female,character,Molly Weasley;Mrs. Weasley;Molly,562,0.62
-Fred Weasley,male,character,Fred Weasley;Fred,525,0.84
-George Weasley,male,character,George Weasley;George,498,0.89
-Minerva McGonagall,female,character,Professor McGonagall;Minerva McGonagall;McGonagall;Minerva,469,0.6
-Vernon Dursley,male,character,Vernon Dursley;Uncle Vernon;Mr. Dursley;Vernon,393,0.94
-Dudley Dursley,male,character,Dudley Dursley;Dudley,308,0.93
-Percy Weasley,male,character,Percy Weasley;Percy,293,0.92
-Lord Voldemort,male,character,He-Who-Must-Not-Be-Named;Lord Voldemort;You-Know- Who;the Dark Lord;You-Know-Who;Tom Riddle;Voldemort;Riddle;Tom,283,0.94
-Luna Lovegood,female,character,Luna Lovegood;Lovegood;Luna,278,0.61
-Bill Weasley,male,character,Bill Weasley;Bill,262,0.79
-Dolores Umbridge,female,character,Professor Umbridge;Dolores Umbridge;Umbridge;Dolores,255,0.78
-Barty Crouch,male,character,Barty Crouch Sr.;Barty Crouch;Mr. Crouch;Crouch,196,0.92
-Ludo Bagman,male,character,Ludo Bagman;Mr. Bagman;Bagman;Ludo,182,0.92
-Dean Thomas,male,character,Dean Thomas;Dean,174,0.88
-Cho Chang,female,character,Cho Chang;Chang;Cho,172,0.56
-Sirius Black,male,character,Sirius Black;Snuffles;Padfoot;Sirius;Black,156,0.93
-Cedric Diggory,male,character,Cedric Diggory;Mr. Diggory;Diggory;Cedric,153,0.85
-Sybill Trelawney,female,character,Professor Trelawney;Sybill Trelawney;Trelawney;Sybill,146,0.76
-Lucius Malfoy,male,character,Lucius Malfoy;Mr. Malfoy;Lucius,145,0.98
-James Potter,male,character,James Potter;Prongs;James,139,0.91
-Argus Filch,male,character,Argus Filch;Mr. Filch;Filch,136,0.9
-Rita Skeeter,female,character,Rita Skeeter;Skeeter;Rita,124,0.6
-Gilderoy Lockhart,male,character,Professor Lockhart;Gilderoy Lockhart;Gilderoy;Lockhart,124,0.92
-Poppy Pomfrey,female,character,Madam Pomfrey;Poppy Pomfrey,112,0.61
-Gregory Goyle,male,character,Gregory Goyle;Goyle,110,0.89
-Rufus Scrimgeour,male,character,Minister Scrimgeour;Rufus Scrimgeour;Scrimgeour,103,0.95
-Alastor Moody,male,character,Professor Moody;Alastor Moody;Mad-Eye Moody;Mad-Eye;Moody,102,0.95
-Igor Karkaroff,male,character,Professor Karkaroff;Igor Karkaroff;Karkaroff,100,1.0
-Peter Pettigrew,male,character,Peter Pettigrew;Pettigrew;Scabbers;Wormtail;Peter,88,1.0
-Lee Jordan,male,character,Lee Jordan;Jordan;Lee,88,0.79
-Katie Bell,female,character,Katie Bell;Katie,87,0.76
-Charlie Weasley,male,character,Charlie Weasley;Charlie,85,0.82
-Severus Snape,male,character,Professor Snape;Severus Snape;Severus;Snape,79,1.0
-Neville Longbottom,male,character,Neville Longbottom;Longbottom;Neville,75,0.94
-Lily Potter,female,character,Lily Potter;Lily Evans;Lily,74,0.62
-Ernie Macmillan,male,character,Ernie Macmillan;Ernie,74,0.86
-Stan Shunpike,male,character,Stan Shunpike;Stan,71,0.82
-Moaning Myrtle,female,character,Moaning Myrtle;Myrtle,63,0.56
-Filius Flitwick,male,character,Professor Flitwick;Filius Flitwick;Flitwick,62,0.9
-Xenophilius Lovegood,male,character,Xenophilius Lovegood;Mr. Lovegood;Xenophilius,62,0.88
-Viktor Krum,male,character,Viktor Krum;Viktor;Krum,58,0.95
-Kingsley Shacklebolt,male,character,Kingsley Shacklebolt;Shacklebolt;Kingsley,58,0.88
-Borgin,male,character,Mr. Borgin;Borgin,58,0.83
-Gellert Grindelwald,male,character,Gellert Grindelwald;Grindelwald;Gellert,57,1.0
-Pomona Sprout,female,character,Professor Sprout;Pomona Sprout;Sprout,56,0.76
-Frank Bryce,male,character,Frank Bryce;Frank,55,1.0
-Colin Creevey,male,character,Colin Creevey;Colin,54,1.0
-Petunia Dursley,female,character,Petunia Dursley;Aunt Petunia;Mrs. Dursley;Petunia,52,0.85
-Horace Slughorn,male,character,Professor Slughorn;Horace Slughorn;Slughorn;Horace,46,0.92
-Arabella Figg,female,character,Arabella Figg;Mrs. Figg;Figg,46,0.75
-Alicia Spinnet,female,character,Alicia Spinnet;Alicia,43,0.56
-Garrick Ollivander,male,character,Garrick Ollivander;Mr. Ollivander;Ollivander,41,1.0
-Fenrir Greyback,male,character,Fenrir Greyback;Greyback,41,1.0
-Godric Gryffindor,male,character,Godric Gryffindor;Godric,41,0.92
-Gaunt,male,character,Mr. Gaunt;Gaunt,41,0.92
-Madam Hooch,female,character,Madam Hooch,39,1.0
-Aberforth Dumbledore,male,character,Aberforth Dumbledore;Aberforth,38,1.0
-Narcissa Malfoy,female,character,Narcissa Malfoy;Mrs. Malfoy;Narcissa,38,0.72
-Auntie Muriel,female,character,Auntie Muriel;Muriel,37,0.5
-Ted Tonks,male,character,Ted Tonks;Ted,36,0.86
-Zabini,male,character,Zabini,34,0.8
-Aunt Marge,female,character,Aunt Marge;Marge,34,0.95
-Zacharias Smith,male,character,Zacharias Smith;Zacharias;Smith,32,1.0
-Seamus Finnigan,male,character,Seamus Finnigan;Seamus,31,1.0
-Oliver Wood,male,character,Oliver Wood;Oliver,27,0.83
-Dolohov,male,character,Dolohov,27,0.92
-Bellatrix Lestrange,female,character,Bellatrix Lestrange;Bellatrix;Lestrange,26,0.67
-Bertha Jorkins,female,character,Bertha Jorkins;Bertha,25,0.5
-Ogden,male,character,Ogden,25,0.9
-Doge,male,character,Doge,25,0.83
-Amos Diggory,male,character,Amos Diggory;Amos,24,1.0
-Merope,female,character,Merope,23,0.85
-Quirinus Quirrell,male,character,Professor Quirrell;Quirinus Quirrell;Quirrell,22,1.0
-Montague,male,character,Montague,22,0.9
-Lavender Brown,female,character,Lavender Brown;Lavender,21,0.5
-Michael Corner,male,character,Michael Corner;Michael,21,0.5
-Professor Binns,male,character,Professor Binns,21,0.71
-Bode,male,character,Mr. Bode;Bode,21,1.0
-Mundungus Fletcher,male,character,Mundungus Fletcher;Mundungus;Fletcher,20,1.0
-Mrs. Cattermole,female,character,Mrs. Cattermole,20,0.91
-Nearly Headless Nick,male,character,Nearly Headless Nick;Sir Nicholas;Nick,18,1.0
-Cornelius Fudge,male,character,Cornelius Fudge;Minister Fudge;Cornelius;Fudge,17,1.0
-Rubeus Hagrid,male,character,Rubeus Hagrid;Hagrid;Rubeus,7,1.0
-Nymphadora Tonks,female,character,Nymphadora Tonks;Nymphadora;Tonks,5,1.0
-Fleur Delacour,female,character,Fleur Delacour;Fleur,4,1.0
-Parvati Patil,female,character,Parvati Patil;Parvati,4,0.5
+Harry Potter,male,character,the Boy Who Lived;Harry Potter;Mr. Potter;Potter;Harry,18139,0.89
+Ron Weasley,male,character,Ron Weasley;Weasley;Ronald;Ron,6082,0.82
+Albus Dumbledore,male,character,Headmaster Dumbledore;Professor Dumbledore;Albus Dumbledore;Dumbledore;Albus,2634,0.94
+Hermione Granger,female,character,Miss Hermione Granger;Hermione Granger;Miss Granger;Hermione;Granger,2377,0.53
+Draco Malfoy,male,character,Draco Malfoy;Malfoy,1052,0.95
+Remus Lupin,male,character,Professor Lupin;Remus Lupin;Lupin;Moony;Remus,741,0.94
+Arthur Weasley,male,character,Arthur Weasley;Mr. Weasley;Arthur,739,0.91
+Ginny Weasley,female,character,Ginny Weasley;Ginevra;Ginny,715,0.58
+Molly Weasley,female,character,Molly Weasley;Mrs. Weasley;Molly,704,0.63
+Minerva McGonagall,female,character,Professor McGonagall;Minerva McGonagall;McGonagall;Minerva,699,0.62
+Fred Weasley,male,character,Fred Weasley;Fred,617,0.88
+George Weasley,male,character,George Weasley;George,605,0.89
+Vernon Dursley,male,character,Vernon Dursley;Uncle Vernon;Mr. Dursley;Vernon,506,0.92
+Dudley Dursley,male,character,Dudley Dursley;Dudley,378,0.95
+Lord Voldemort,male,character,He-Who-Must-Not-Be-Named;Lord Voldemort;You-Know- Who;the Dark Lord;You-Know-Who;Tom Riddle;Voldemort;Riddle;Tom,337,0.95
+Percy Weasley,male,character,Percy Weasley;Percy,329,0.91
+Dolores Umbridge,female,character,Professor Umbridge;Dolores Umbridge;Umbridge;Dolores,322,0.79
+Luna Lovegood,female,character,Luna Lovegood;Lovegood;Luna,322,0.61
+Bill Weasley,male,character,Bill Weasley;Bill,297,0.83
+Barty Crouch,male,character,Barty Crouch Sr.;Barty Crouch;Mr. Crouch;Crouch,252,0.89
+Sybill Trelawney,female,character,Professor Trelawney;Sybill Trelawney;Trelawney;Sybill,231,0.76
+Ludo Bagman,male,character,Ludo Bagman;Mr. Bagman;Bagman;Ludo,230,0.89
+Dean Thomas,male,character,Dean Thomas;Dean,207,0.91
+Cedric Diggory,male,character,Cedric Diggory;Mr. Diggory;Diggory;Cedric,193,0.83
+Sirius Black,male,character,Sirius Black;Snuffles;Padfoot;Sirius;Black,189,0.89
+Lucius Malfoy,male,character,Lucius Malfoy;Mr. Malfoy;Lucius,187,0.97
+Cho Chang,female,character,Cho Chang;Chang;Cho,187,0.53
+Argus Filch,male,character,Argus Filch;Mr. Filch;Filch,160,0.87
+Rita Skeeter,female,character,Rita Skeeter;Skeeter;Rita,158,0.54
+James Potter,male,character,James Potter;Prongs;James,157,0.91
+Gilderoy Lockhart,male,character,Professor Lockhart;Gilderoy Lockhart;Gilderoy;Lockhart,149,0.91
+Poppy Pomfrey,female,character,Madam Pomfrey;Poppy Pomfrey,146,0.61
+Alastor Moody,male,character,Professor Moody;Alastor Moody;Mad-Eye Moody;Mad-Eye;Moody,130,0.95
+Rufus Scrimgeour,male,character,Minister Scrimgeour;Rufus Scrimgeour;Scrimgeour,130,1.0
+Igor Karkaroff,male,character,Professor Karkaroff;Igor Karkaroff;Karkaroff,128,0.98
+Gregory Goyle,male,character,Gregory Goyle;Goyle,125,0.87
+Peter Pettigrew,male,character,Peter Pettigrew;Pettigrew;Scabbers;Wormtail;Peter,112,0.98
+Katie Bell,female,character,Katie Bell;Katie,109,0.79
+Charlie Weasley,male,character,Charlie Weasley;Charlie,107,0.85
+Severus Snape,male,character,Professor Snape;Severus Snape;Severus;Snape,102,1.0
+Lee Jordan,male,character,Lee Jordan;Jordan;Lee,100,0.81
+Filius Flitwick,male,character,Professor Flitwick;Filius Flitwick;Flitwick,96,0.94
+Xenophilius Lovegood,male,character,Xenophilius Lovegood;Mr. Lovegood;Xenophilius,87,0.91
+Lily Potter,female,character,Lily Potter;Lily Evans;Lily,83,0.61
+Ernie Macmillan,male,character,Ernie Macmillan;Ernie,82,0.89
+Neville Longbottom,male,character,Neville Longbottom;Longbottom;Neville,81,0.91
+Stan Shunpike,male,character,Stan Shunpike;Stan,79,0.85
+Pomona Sprout,female,character,Professor Sprout;Pomona Sprout;Sprout,73,0.75
+Moaning Myrtle,female,character,Moaning Myrtle;Myrtle,73,0.54
+Kingsley Shacklebolt,male,character,Kingsley Shacklebolt;Kingsley,71,0.9
+Petunia Dursley,female,character,Petunia Dursley;Aunt Petunia;Mrs. Dursley;Petunia,69,0.85
+Viktor Krum,male,character,Viktor Krum;Viktor;Krum,69,0.92
+Borgin,male,character,Mr. Borgin;Borgin,67,0.85
+Colin Creevey,male,character,Colin Creevey;Colin,66,0.96
+Godric Gryffindor,male,character,Godric Gryffindor;Godric,66,0.85
+Gellert Grindelwald,male,character,Gellert Grindelwald;Grindelwald;Gellert,66,1.0
+Frank Bryce,male,character,Frank Bryce;Frank,66,1.0
+Horace Slughorn,male,character,Professor Slughorn;Horace Slughorn;Slughorn;Horace,58,1.0
+Fenrir Greyback,male,character,Fenrir Greyback;Greyback,55,0.89
+Garrick Ollivander,male,character,Garrick Ollivander;Mr. Ollivander;Ollivander,53,0.96
+Marvolo Gaunt,male,character,Marvolo Gaunt;Mr. Gaunt;Gaunt,53,0.97
+Auntie Muriel,female,character,Auntie Muriel;Muriel,52,0.71
+Alicia Spinnet,female,character,Alicia Spinnet;Alicia,52,0.58
+Arabella Figg,female,character,Arabella Figg;Mrs. Figg;Figg,51,0.71
+Madam Hooch,female,character,Madam Hooch,51,0.9
+Aberforth Dumbledore,male,character,Aberforth Dumbledore;Aberforth,49,0.95
+Zacharias Smith,male,character,Zacharias Smith;Zacharias;Smith,45,1.0
+Narcissa Malfoy,female,character,Narcissa Malfoy;Mrs. Malfoy;Narcissa,44,0.75
+Seamus Finnigan,male,character,Seamus Finnigan;Seamus,42,1.0
+Zabini,male,character,Zabini,40,1.0
+Ogden,male,character,Ogden,39,0.88
+Ted Tonks,male,character,Ted Tonks;Ted,38,0.83
+Elphias Doge,male,character,Elphias Doge;Elphias;Doge,38,0.6
+Aunt Marge,female,character,Aunt Marge;Marge,37,0.95
+Professor Binns,male,character,Professor Binns,35,0.88
+Mundungus Fletcher,male,character,Mundungus Fletcher;Mundungus;Fletcher,33,1.0
+Oliver Wood,male,character,Oliver Wood;Oliver,33,0.86
+Lavender Brown,female,character,Lavender Brown;Lavender,32,0.75
+Bertha Jorkins,female,character,Bertha Jorkins;Bertha,32,0.54
+Dolohov,male,character,Dolohov,31,0.92
+Quirinus Quirrell,male,character,Professor Quirrell;Quirinus Quirrell;Quirrell,30,1.0
+Bellatrix Lestrange,female,character,Bellatrix Lestrange;Bellatrix;Lestrange,29,0.6
+Montague,male,character,Montague,29,0.85
+Mrs. Cattermole,female,character,Mrs. Cattermole,28,0.93
+Amos Diggory,male,character,Amos Diggory;Amos,27,1.0
+Michael Corner,female,character,Michael Corner;Michael,26,0.57
+Hannah Abbott,female,character,Hannah Abbott;Hannah,26,0.5
+Merope,female,character,Merope,26,0.87
+Angelina Johnson,female,character,Angelina Johnson;Johnson,25,0.75
+Cornelius Fudge,male,character,Cornelius Fudge;Minister Fudge;Cornelius;Fudge,23,1.0
+Sir Cadogan,male,character,Sir Cadogan,23,1.0
+Gregorovitch,male,character,Gregorovitch,22,1.0
+Bode,male,character,Mr. Bode;Bode,22,1.0
+Madam Malkin,female,character,Madam Malkin,21,0.82
+Death Eater,male,character,Death Eater,20,0.86
+Dedalus Diggle,male,character,Dedalus Diggle;Dedalus,20,1.0
+Mr. Roberts,male,character,Mr. Roberts,20,1.0
+Nearly Headless Nick,male,character,Nearly Headless Nick;Sir Nicholas;Nick,19,1.0
+Parvati Patil,female,character,Parvati Patil;Parvati;Patil,13,0.5
+Rubeus Hagrid,male,character,Rubeus Hagrid;Hagrid;Rubeus,9,1.0
+Nymphadora Tonks,female,character,Nymphadora Tonks;Nymphadora;Tonks,8,1.0
+Fleur Delacour,female,character,Fleur Delacour;Fleur,5,1.0
 Vincent Crabbe,male,character,Vincent Crabbe;Crabbe,3,1.0
 Olympe Maxime,female,character,Madame Maxime;Olympe Maxime,0,0.0

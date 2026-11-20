@@ -131,7 +131,7 @@ NOT_PERSONS = {
     "Patronus", "Avada Kedavra", "Crucio", "Imperio", "Expelliarmus", "Stupefy", "Sectumsempra", "Obliviate", "Rictusempra", "Petrificus Totalus", "Accio", "Alohomora", "Expecto Patronum", "Lumos", "Nox",
 
     # Creatures
-    "Fang", "Norbert", "Aragog", "Norris", "Mrs. Norris", "Crookshanks", "Hedwig", "Buckbeat", "Fawkes", "Thestral", "Dobby", "Winky", "Kreacher", "Nagini", "Grawp", "Fluffy", "Basilisk", "Acromantula", "Hippogriff", "Grindylow", "Dementor", "Dementors", "Griphook", "Goblin", "Firenze", "Bane", "Ronan", "Jus",
+    "Fang", "Norbert", "Aragog", "Norris", "Mrs. Norris", "Crookshanks", "Hedwig", "Buckbeak", "Fawkes", "Thestral", "Dobby", "Winky", "Kreacher", "Nagini", "Grawp", "Fluffy", "Basilisk", "Acromantula", "Hippogriff", "Grindylow", "Dementor", "Dementors", "Griphook", "Goblin", "Firenze", "Bane", "Ronan", "Jus",
 
     # Other
     "Madam", "Mum", "Dad", "Muggle", "Muggles", "Professor", "Sir", "Gran", "Merlin", "Yeh", "Uncle", "Aunt", "Mark", "Dark Mark", "Don", "Blimey", "Keeper", "Seeker", "Chaser", "Beater", "Captain", "Prefect", "Head Boy", "Head Girl", "Headmaster", "Headmistress", "Minister of Magic", "Durmstrang", "Beauxbatons", "Death", "Order",

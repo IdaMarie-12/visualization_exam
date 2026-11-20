@@ -88,7 +88,10 @@ def find_mentions(doc, matcher, variants, linker, sentence_number):
         
             if tok.i in span_at:
                 span = span_at[tok.i]
-                row = variants[span.text]
+                span_text = re.sub(r"\.(?=\w)", ". ", span.text)
+                row = variants.get(span.text) or variants.get(span_text)
+                if row is None:
+                    continue
                 linker.saw_name(row, number)
                 skip_until = span.end
                 yield span.root, row["character"], row["gender"], row["group"], "name"
@@ -100,7 +103,7 @@ def find_mentions(doc, matcher, variants, linker, sentence_number):
                 if row:
                     yield tok, row["character"], gender, row["group"], "linked"
                 else:
-                    yield tok, f"pronoun({gender})", gender, "pronoun", "pronoun"
+                    yield tok, f"pronoun ({gender})", gender, "pronoun", "pronoun"
 
 #--------------------------------
 # Following the links from a mention to its describing words

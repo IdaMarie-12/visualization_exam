@@ -75,7 +75,7 @@ def main():
                 mention_rows.append({**chapter_info, "character": name, "gender": row["gender"], "group": row["group"], "kind": "name", "mentions": counts[name]})
 
         for gender, pattern in PRONOUNS.items():
-            mention_rows.append({**chapter_info, "character": f"pronoun({gender})", "gender": gender, "group": "pronoun", "kind": "pronoun", "mentions": len(pattern.findall(chapter.text))})
+            mention_rows.append({**chapter_info, "character": f"pronoun ({gender})", "gender": gender, "group": "pronoun", "kind": "pronoun", "mentions": len(pattern.findall(chapter.text))})
 
     MENTIONS_CSV.parent.mkdir(parents=True, exist_ok=True)
     mentions = pd.DataFrame(mention_rows)
