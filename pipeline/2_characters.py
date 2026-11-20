@@ -42,6 +42,7 @@ ALIASES = {
     "Parvati Patil": ["Parvati"],
 
     # Hogwarts staff
+    "Albus Dumbledore": ["Dumbledore", "Professor Dumbledore", "Headmaster Dumbledore", "Albus"],
     "Poppy Pomfrey": ["Madam Pomfrey"],
     "Alastor Moody": ["Mad-Eye", "Mad-Eye Moody"],
     "Rubeus Hagrid": ["Hagrid", "Rubeus"],
@@ -107,9 +108,9 @@ _FEMALE = [
 
     # Other
     "Olympe Maxime",
-    
+
     # Wrong in the pronoun vote (not in ALIASES)
-    "Alicia Spinnet", "Auntie Muriel", "Bertha Jorkins",
+    "Alicia Spinnet", "Auntie Muriel", "Bertha Jorkins", "Hannah Abbott", "Angelina Johnson",
 ]
 GENDER_OVERRIDES = {name: "male" for name in ALIASES}
 GENDER_OVERRIDES.update({name: "female" for name in _FEMALE})
@@ -119,10 +120,10 @@ NOT_PERSONS = {
     "Hogwarts", "Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin", "Quidditch",
 
     # Locations
-    "Gringotts", "Diagon Alley", "Hogsmeade", "Privet Drive", "Godric's Hollow", "Azkaban",
+    "Gringotts", "Diagon Alley", "Hogsmeade", "Privet Drive", "Godric's Hollow", "Azkaban", "Burrow",
 
     # Objects
-    "Firebolt", "Nimbus", "Nimbus two thousand", "Invisibility Cloak", "Elder Wand", "Resurrection Stone", "Philosopher's Stone", "Bludger", "Snitch", "Golden Snitch", "Horcrux", "Horcruxes", "Deathly Hallows", "Marauder's Map", "Marauders' Map", "Time-Turner", "Pensieve", "Sorting Hat", "Floo", "Polyjuice", "Butterbeer", "Cloak", "Prophet", "Daily Prophet", "Quibbler",
+    "Firebolt", "Nimbus", "Nimbus two thousand", "Invisibility Cloak", "Elder Wand", "Resurrection Stone", "Philosopher's Stone", "Bludger", "Snitch", "Golden Snitch", "Horcrux", "Horcruxes", "Deathly Hallows", "Marauder's Map", "Marauders' Map", "Time-Turner", "Pensieve", "Sorting Hat", "Floo", "Polyjuice", "Butterbeer", "Cloak", "Prophet", "Daily Prophet", "Quibbler", "Map",
 
     # Spells
     "Patronus", "Avada Kedavra", "Crucio", "Imperio", "Expelliarmus", "Stupefy", "Sectumsempra", "Obliviate", "Rictusempra", "Petrificus Totalus", "Accio", "Alohomora", "Expecto Patronum", "Lumos", "Nox",
@@ -131,7 +132,7 @@ NOT_PERSONS = {
     "Fang", "Norbert", "Aragog", "Norris", "Mrs. Norris", "Crookshanks", "Hedwig", "Buckbeat", "Fawkes", "Thestral", "Dobby", "Winky", "Kreacher", "Nagini", "Grawp", "Fluffy", "Basilisk", "Acromantula", "Hippogriff", "Grindylow", "Dementor", "Dementors", 
 
     # Other
-    "Madam", "Mum", "Dad", "Muggle", "Muggles", "Professor", "Sir", "Gran", "Merlin", "Yeh", "Uncle", "Aunt", "Mark", "Dark Mark", "Don", "Blimey", "Keeper", "Seeker", "Chaser", "Beater", "Captain", "Prefect", "Head Boy", "Head Girl", "Headmaster", "Headmistress", "Minister of Magic", "Durmstrang", "Beauxbatons"
+    "Madam", "Mum", "Dad", "Muggle", "Muggles", "Professor", "Sir", "Gran", "Merlin", "Yeh", "Uncle", "Aunt", "Mark", "Dark Mark", "Don", "Blimey", "Keeper", "Seeker", "Chaser", "Beater", "Captain", "Prefect", "Head Boy", "Head Girl", "Headmaster", "Headmistress", "Minister of Magic", "Durmstrang", "Beauxbatons", "Death",
 }
 
 #--------------------------------
@@ -184,6 +185,10 @@ def looks_like_name(variant):
     if not re.match(r"[A-Z]", bare) or not re.search(r"[a-z]", bare):
         return False
     if "," in bare or " and " in bare:  # "Harry, Ron" = two people, not one name
+        return False
+
+    words = bare.split()
+    if any(w[0].islower() for w in words[1:] if w not in ("of", "the", "de")):
         return False
 
     return bare not in NOT_PERSONS and singular not in NOT_PERSONS
@@ -253,14 +258,11 @@ def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT, m
 
     members = defaultdict(list)  
 
-    for variant in counts:
-        if variant in alias_of:
-            members[alias_of[variant]].append(variant)
-            report[variant] = ("alias", alias_of[variant])
-    for name in aliases:  
-        if name in counts and name not in report:
-            members[name].append(name)
-            report[name] = ("alias", name)
+    for name, variants in aliases.items():
+        for variant in [name] + variants:
+            if variant not in members[name]:
+                members[name].append(variant)
+            report[variant] = ("alias", name)
 
     rest = []
     for variant, n in counts.items():
@@ -308,10 +310,10 @@ def group_characters(counts, votes, aliases=ALIASES, min_count=MIN_NAME_COUNT, m
         else:
             report[variant] = ("ambiguous", " / ".join(ranked[:4]))
 
-    ranked = sorted([c for c in members if total(c) > 0], key=total, reverse=True)
+    ranked = sorted([c for c in members if total(c) > 0 or c in aliases], key=total, reverse=True)
     characters = []
     for name in ranked:
-        if len(characters) >= max_characters:
+        if len(characters) >= max_characters and name not in aliases:
             for v in members[name]:
                 report[v] = ("not in the top", name)
             continue
